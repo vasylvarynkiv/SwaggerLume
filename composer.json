@@ -1,5 +1,5 @@
 {
-  "name": "darkaonline/swagger-lume",
+  "name": "darkaonline/swagger-lumen",
   "description": "Swagger integration to Lumen 5",
   "keywords": ["lumen", "laravel", "swagger"],
   "license": "MIT",
@@ -26,7 +26,7 @@
       "src/helpers.php"
     ],
     "psr-4": {
-      "SwaggerLume\\": "src"
+      "SwaggerLumen\\": "src"
     }
   },
   "autoload-dev": {

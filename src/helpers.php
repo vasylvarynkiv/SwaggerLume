@@ -1,6 +1,6 @@
 <?php
 
-use SwaggerLume\Exceptions\SwaggerLumeException;
+use SwaggerLume\Exceptions\SwaggerLumenException;
 
 if (! function_exists('swagger_ui_dist_path')) {
     /**
@@ -9,7 +9,7 @@ if (! function_exists('swagger_ui_dist_path')) {
      * @param null $asset
      *
      * @return string
-     * @throws \SwaggerLume\Exceptions\SwaggerLumeException
+     * @throws \SwaggerLumen\Exceptions\SwaggerLumenException
      */
     function swagger_ui_dist_path($asset = null)
     {
@@ -33,30 +33,30 @@ if (! function_exists('swagger_ui_dist_path')) {
         }
 
         if (! in_array($asset, $allowed_files)) {
-            throw new SwaggerLumeException(sprintf('(%s) - this L5 Swagger asset is not allowed', $asset));
+            throw new SwaggerLumenException(sprintf('(%s) - this L5 Swagger asset is not allowed', $asset));
         }
 
         return realpath($path.$asset);
     }
 }
 
-if (! function_exists('swagger_lume_asset')) {
+if (! function_exists('swagger_lumen_asset')) {
     /**
      * Returns asset from swagger-ui composer package.
      *
      * @param $asset string
      *
      * @return string
-     * @throws \SwaggerLume\Exceptions\SwaggerLumeException
+     * @throws \SwaggerLumen\Exceptions\SwaggerLumenException
      */
-    function swagger_lume_asset($asset)
+    function swagger_lumen_asset($asset)
     {
         $file = swagger_ui_dist_path($asset);
 
         if (! file_exists($file)) {
-            throw new SwaggerLumeException(sprintf('Requested L5 Swagger asset file (%s) does not exists', $asset));
+            throw new SwaggerLumenException(sprintf('Requested L5 Swagger asset file (%s) does not exists', $asset));
         }
 
-        return route('swagger-lume.asset', ['asset' => $asset, 'v' => md5($file)], app('request')->secure());
+        return route('swagger-lumen.asset', ['asset' => $asset, 'v' => md5($file)], app('request')->secure());
     }
 }

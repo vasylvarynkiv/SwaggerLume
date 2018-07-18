@@ -4,11 +4,11 @@
  * @SWG\Swagger(
  *     basePath="/api/v1",
  *     schemes={"http", "https"},
- *     host=SWAGGER_LUME_CONST_HOST,
+ *     host=SWAGGER_LUMEN_CONST_HOST,
  *     @SWG\Info(
  *         version="1.0.0",
- *         title="SwaggerLume API",
- *         description="SwaggerLume API description",
+ *         title="SwaggerLumen API",
+ *         description="SwaggerLumen API description",
  *         @SWG\Contact(
  *             email="darius@matulionis.lt"
  *         ),

@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume\Console;
+namespace SwaggerLumen\Console;
 
 use Illuminate\Console\Command;
 use SwaggerLume\Console\Helpers\Publisher;
@@ -12,7 +12,7 @@ class PublishConfigCommand extends Command
      *
      * @var string
      */
-    protected $name = 'swagger-lume:publish-config';
+    protected $name = 'swagger-lumen:publish-config';
 
     /**
      * The console command description.
@@ -31,9 +31,9 @@ class PublishConfigCommand extends Command
         $this->info('Publish config files');
 
         (new Publisher($this))->publishFile(
-            realpath(__DIR__.'/../../config/').'/swagger-lume.php',
+            realpath(__DIR__.'/../../config/').'/swagger-lumen.php',
             base_path('config'),
-            'swagger-lume.php'
+            'swagger-lumen.php'
         );
     }
 }

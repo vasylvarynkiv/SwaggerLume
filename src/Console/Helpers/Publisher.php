@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume\Console\Helpers;
+namespace SwaggerLumen\Console\Helpers;
 
 use Illuminate\Console\Command;
 

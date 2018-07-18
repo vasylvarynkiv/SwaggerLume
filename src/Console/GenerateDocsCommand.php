@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume\Console;
+namespace SwaggerLumen\Console;
 
 use SwaggerLume\Generator;
 use Illuminate\Console\Command;
@@ -12,7 +12,7 @@ class GenerateDocsCommand extends Command
      *
      * @var string
      */
-    protected $name = 'swagger-lume:generate';
+    protected $name = 'swagger-lumen:generate';
 
     /**
      * The console command description.

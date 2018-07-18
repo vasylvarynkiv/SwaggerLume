@@ -6,7 +6,7 @@ use Laravel\Lumen\Application;
 use Laravel\Lumen\Testing\TestCase;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use SwaggerLume\ServiceProvider as SwaggerLumeServiceProvider;
+use SwaggerLumen\ServiceProvider as SwaggerLumenServiceProvider;
 
 class LumenTestCase extends TestCase
 {
@@ -62,7 +62,7 @@ class LumenTestCase extends TestCase
 
         $app->withFacades();
 
-        $app->configure('swagger-lume');
+        $app->configure('swagger-lumen');
 
         $app->singleton(
             ExceptionHandler::class,
@@ -74,9 +74,9 @@ class LumenTestCase extends TestCase
             ConsoleKernel::class
         );
 
-        $app->register(SwaggerLumeServiceProvider::class);
+        $app->register(SwaggerLumenServiceProvider::class);
 
-        $app->router->group(['namespace' => 'SwaggerLume'], function ($route) {
+        $app->router->group(['namespace' => 'SwaggerLumen'], function ($route) {
             require __DIR__.'/../src/routes.php';
         });
 
@@ -90,12 +90,12 @@ class LumenTestCase extends TestCase
      */
     protected function isOpenApi()
     {
-        return version_compare(config('swagger-lume.swagger_version'), '3.0', '>=');
+        return version_compare(config('swagger-lumen.swagger_version'), '3.0', '>=');
     }
 
     protected function setPaths()
     {
-        $cfg = config('swagger-lume');
+        $cfg = config('swagger-lumen');
         //Changing path
         $cfg['paths']['annotations'] = storage_path('annotations/Swagger');
 
@@ -107,10 +107,10 @@ class LumenTestCase extends TestCase
         $cfg['generate_always'] = true;
 
         //Adding constants which will be replaced in generated json file
-        $cfg['constants']['SWAGGER_LUME_CONST_HOST'] = 'http://my-default-host.com';
+        $cfg['constants']['SWAGGER_LUMEN_CONST_HOST'] = 'http://my-default-host.com';
 
         //Save the config
-        config(['swagger-lume' => $cfg]);
+        config(['swagger-lumen' => $cfg]);
 
         $cfg = config('view');
         $cfg['view'] = [
@@ -129,7 +129,7 @@ class LumenTestCase extends TestCase
 
     protected function jsonDocsFile()
     {
-        return config('swagger-lume.paths.docs').'/api-docs.json';
+        return config('swagger-lumen.paths.docs').'/api-docs.json';
     }
 
     protected function copyAssets()

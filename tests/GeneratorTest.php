@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use SwaggerLume\Generator;
+use SwaggerLumen\Generator;
 
 class GeneratorTest extends LumenTestCase
 {
@@ -15,11 +15,11 @@ class GeneratorTest extends LumenTestCase
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
 
-        $response = $this->get(config('swagger-lume.routes.docs'));
+        $response = $this->get(config('swagger-lumen.routes.docs'));
 
         $this->assertResponseOk();
 
-        $this->assertContains('SwaggerLume', $response->response->getContent());
+        $this->assertContains('SwaggerLumen', $response->response->getContent());
         $this->assertContains('my-default-host.com', $response->response->getContent());
     }
 
@@ -32,19 +32,19 @@ class GeneratorTest extends LumenTestCase
 
         $this->setPaths();
 
-        $cfg = config('swagger-lume');
+        $cfg = config('swagger-lumen');
         $cfg['paths']['base'] = '/new_path/is/here';
-        config(['swagger-lume' => $cfg]);
+        config(['swagger-lumen' => $cfg]);
 
         Generator::generateDocs();
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
 
-        $response = $this->get(config('swagger-lume.routes.docs'));
+        $response = $this->get(config('swagger-lumen.routes.docs'));
 
         $this->assertResponseOk();
 
-        $this->assertContains('SwaggerLume', $response->response->getContent());
+        $this->assertContains('SwaggerLumen', $response->response->getContent());
         $this->assertContains('new_path', $response->response->getContent());
     }
 
@@ -53,11 +53,11 @@ class GeneratorTest extends LumenTestCase
     {
         $this->setPaths();
 
-        $cfg = config('swagger-lume');
+        $cfg = config('swagger-lumen');
         $cfg['proxy'] = 'http://proxy.dev';
-        config(['swagger-lume' => $cfg]);
+        config(['swagger-lumen' => $cfg]);
 
-        $this->get(config('swagger-lume.routes.api'));
+        $this->get(config('swagger-lumen.routes.api'));
 
         $this->assertResponseOk();
 
@@ -69,11 +69,11 @@ class GeneratorTest extends LumenTestCase
     {
         $this->setPaths();
 
-        $cfg = config('swagger-lume');
+        $cfg = config('swagger-lumen');
         $cfg['validator_url'] = 'http://validator-url.dev';
-        config(['swagger-lume' => $cfg]);
+        config(['swagger-lumen' => $cfg]);
 
-        $response = $this->get(config('swagger-lume.routes.api'));
+        $response = $this->get(config('swagger-lumen.routes.api'));
 
         $this->assertResponseOk();
 

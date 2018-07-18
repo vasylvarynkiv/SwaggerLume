@@ -1,4 +1,4 @@
-[![Total Downloads](https://poser.pugx.org/DarkaOnLine/swagger-lume/downloads.svg)](https://packagist.org/packages/DarkaOnLine/swagger-lume)
+[![Total Downloads](https://poser.pugx.org/DarkaOnLine/swagger-lumen/downloads.svg)](https://packagist.org/packages/DarkaOnLine/swagger-lumen)
 [![Build Status](https://travis-ci.org/DarkaOnLine/SwaggerLume.svg?branch=master)](https://travis-ci.org/DarkaOnLine/SwaggerLume)
 [![Coverage Status](https://coveralls.io/repos/github/DarkaOnLine/SwaggerLume/badge.svg?branch=master)](https://coveralls.io/github/DarkaOnLine/SwaggerLume?branch=master)
 [![Code Climate](https://codeclimate.com/github/DarkaOnLine/SwaggerLume/badges/gpa.svg)](https://codeclimate.com/github/DarkaOnLine/SwaggerLume)
@@ -16,11 +16,11 @@ Installation
 
  Lumen      | Swagger UI| OpenAPI Spec compatibility | L5-Swagger
 :-----------|:----------|:---------------------------|:----------
- 5.0 - 5.3  | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~1.0" ```
- 5.4.x      | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~2.0" ```
- 5.4.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:~3.0" ```
- 5.5.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:5.5.*" ```
- 5.6.x      | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:5.6.*" ```
+ 5.0 - 5.3  | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lumen:~1.0" ```
+ 5.4.x      | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lumen:~2.0" ```
+ 5.4.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lumen:~3.0" ```
+ 5.5.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lumen:5.5.*" ```
+ 5.6.x      | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lumen:5.6.*" ```
 
 
 - Open your `bootstrap/app.php` file and:
@@ -32,7 +32,7 @@ uncomment this line (around line 26) in `Create The Application` section:
 
 add this line before `Register Container Bindings` section:
 ```php
-     $app->configure('swagger-lume');
+     $app->configure('swagger-lumen');
 ```
 
 add this line in `Register Service Providers` section:
@@ -41,9 +41,9 @@ add this line in `Register Service Providers` section:
 ```
 
 
-- Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
+- Run `php artisan swagger-lumen:publish-config` to publish configs (`config/swagger-lumen.php`)
 - Make configuration changes if needed
-- Run `php artisan swagger-lume:publish` to publish everything
+- Run `php artisan swagger-lumen:publish` to publish everything
 
 Using [OpenApi 3.0 Specification](https://github.com/OAI/OpenAPI-Specification)
 ============
@@ -64,10 +64,10 @@ or in your `config/l5-swagger.php`:
 
 Configuration
 ============
-- Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
-- Run `php artisan swagger-lume:publish-views` to publish views (`resources/views/vendor/swagger-lume`)
-- Run `php artisan swagger-lume:publish` to publish everything
-- Run `php artisan swagger-lume:generate` to generate docs
+- Run `php artisan swagger-lumen:publish-config` to publish configs (`config/swagger-lumen.php`)
+- Run `php artisan swagger-lumen:publish-views` to publish views (`resources/views/vendor/swagger-lumen`)
+- Run `php artisan swagger-lumen:publish` to publish everything
+- Run `php artisan swagger-lumen:generate` to generate docs
 
 Changes in 3.0
 ============
@@ -83,11 +83,11 @@ Changes in 2.0
 
 Migrate from 2.0 to 3.0 or 5.5
 ============
-- Remove `config/swagger-lume.php` file (make a copy if needed)
-- Remove `public/vendor/swagger-lume` directory
-- Remove `resources/views/vendor/swagger-lume` directory
-- Run `swagger-lume:publish` to publish new swagger-ui view and configuration
-- Edit your `config/swagger-lume.php` file
+- Remove `config/swagger-lumen.php` file (make a copy if needed)
+- Remove `public/vendor/swagger-lumen` directory
+- Remove `resources/views/vendor/swagger-lumen` directory
+- Run `swagger-lumen:publish` to publish new swagger-ui view and configuration
+- Edit your `config/swagger-lumen.php` file
 
 
 Swagger-php

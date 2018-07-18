@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume;
+namespace SwaggerLumen;
 
 use SwaggerLume\Console\PublishCommand;
 use SwaggerLume\Console\GenerateDocsCommand;
@@ -25,9 +25,9 @@ class ServiceProvider extends BaseProvider
     public function boot()
     {
         $viewPath = __DIR__.'/../resources/views';
-        $this->loadViewsFrom($viewPath, 'swagger-lume');
+        $this->loadViewsFrom($viewPath, 'swagger-lumen');
 
-        $this->app->router->group(['namespace' => 'SwaggerLume'], function ($route) {
+        $this->app->router->group(['namespace' => 'SwaggerLumen'], function ($route) {
             require __DIR__.'/routes.php';
         });
     }
@@ -39,30 +39,30 @@ class ServiceProvider extends BaseProvider
      */
     public function register()
     {
-        $configPath = __DIR__.'/../config/swagger-lume.php';
-        $this->mergeConfigFrom($configPath, 'swagger-lume');
+        $configPath = __DIR__.'/../config/swagger-lumen.php';
+        $this->mergeConfigFrom($configPath, 'swagger-lumen');
 
-        $this->app->singleton('command.swagger-lume.publish', function () {
+        $this->app->singleton('command.swagger-lumen.publish', function () {
             return new PublishCommand();
         });
 
-        $this->app->singleton('command.swagger-lume.publish-config', function () {
+        $this->app->singleton('command.swagger-lumen.publish-config', function () {
             return new PublishConfigCommand();
         });
 
-        $this->app->singleton('command.swagger-lume.publish-views', function () {
+        $this->app->singleton('command.swagger-lumen.publish-views', function () {
             return new PublishViewsCommand();
         });
 
-        $this->app->singleton('command.swagger-lume.generate', function () {
+        $this->app->singleton('command.swagger-lumen.generate', function () {
             return new GenerateDocsCommand();
         });
 
         $this->commands(
-            'command.swagger-lume.publish',
-            'command.swagger-lume.publish-config',
-            'command.swagger-lume.publish-views',
-            'command.swagger-lume.generate'
+            'command.swagger-lumen.publish',
+            'command.swagger-lumen.publish-config',
+            'command.swagger-lumen.publish-views',
+            'command.swagger-lumen.generate'
         );
     }
 }

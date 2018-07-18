@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume\Http\Controllers;
+namespace SwaggerLumen\Http\Controllers;
 
 use SwaggerLume\Generator;
 use Illuminate\Http\Response;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
-class SwaggerLumeController extends BaseController
+class SwaggerLumenController extends BaseController
 {
     /**
      * Dump api-docs.json content endpoint.
@@ -17,13 +17,12 @@ class SwaggerLumeController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function docs($jsonFile = null)
+    public function docs($version, $jsonFile = null)
     {
-        $filePath = config('swagger-lume.paths.docs').'/'.
-            (! is_null($jsonFile) ? $jsonFile : config('swagger-lume.paths.docs_json'));
+        $filePath = config('swagger-lumen.paths.docs') . '/' . strtoupper($version) . '/' . (!is_null($jsonFile) ? $jsonFile : config('swagger-lumen.paths.docs_json'));
 
-        if (! File::exists($filePath)) {
-            abort(404, 'Cannot find '.$filePath);
+        if (!File::exists($filePath)) {
+            abort(404, 'Cannot find ' . $filePath);
         }
 
         $content = File::get($filePath);
@@ -36,24 +35,20 @@ class SwaggerLumeController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function api()
+    public function api($version)
     {
-        if (config('swagger-lume.generate_always')) {
+        if (config('swagger-lumen.generate_always')) {
             Generator::generateDocs();
         }
 
         //need the / at the end to avoid CORS errors on Homestead systems.
-        $response = new Response(
-            view('swagger-lume::index', [
-                'secure' => Request::secure(),
-                'urlToDocs' => route('swagger-lume.docs'),
-                'operationsSorter' => config('swagger-lume.operations_sort'),
-                'configUrl' => config('swagger-lume.additional_config_url'),
-                'validatorUrl' => config('swagger-lume.validator_url'),
-            ]),
-            200,
-            ['Content-Type' => 'text/html']
-        );
+        $response = new Response(view('swagger-lumen::index', [
+            'secure' => Request::secure(),
+            'urlToDocs' => route('swagger-lumen.docs', ['version' => $version]),
+            'operationsSorter' => config('swagger-lumen.operations_sort'),
+            'configUrl' => config('swagger-lumen.additional_config_url'),
+            'validatorUrl' => config('swagger-lumen.validator_url'),
+        ]), 200, ['Content-Type' => 'text/html']);
 
         return $response;
     }

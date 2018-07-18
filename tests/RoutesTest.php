@@ -7,7 +7,7 @@ class RoutesTest extends LumenTestCase
     /** @test */
     public function cantAccessJsonFile()
     {
-        $jsonUrl = config('swagger-lume.routes.docs');
+        $jsonUrl = config('swagger-lumen.routes.docs');
 
         $this->get($jsonUrl);
 
@@ -17,7 +17,7 @@ class RoutesTest extends LumenTestCase
     /** @test */
     public function canAccessJsonFile()
     {
-        $jsonUrl = config('swagger-lume.routes.docs');
+        $jsonUrl = config('swagger-lumen.routes.docs');
 
         $this->setPaths()->crateJsonDocumentationFile();
 
@@ -33,7 +33,7 @@ class RoutesTest extends LumenTestCase
 
         $this->app->prepareForConsoleCommand();
 
-        $response = $this->get(config('swagger-lume.routes.api'));
+        $response = $this->get(config('swagger-lumen.routes.api'));
 
         $this->assertResponseOk();
 
@@ -43,7 +43,7 @@ class RoutesTest extends LumenTestCase
     /** @test */
     public function itCanServeAssets()
     {
-        $response = $this->get(swagger_lume_asset('swagger-ui.css'));
+        $response = $this->get(swagger_lumen_asset('swagger-ui.css'));
 
         $this->assertResponseOk();
 
@@ -53,7 +53,7 @@ class RoutesTest extends LumenTestCase
     /** @test */
     public function userCanAccessOauth2Redirect()
     {
-        $response = $this->get(config('swagger-lume.routes.oauth2_callback'));
+        $response = $this->get(config('swagger-lumen.routes.oauth2_callback'));
 
         $this->assertResponseOk();
 

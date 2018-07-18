@@ -94,7 +94,7 @@ return [
         | Absolute path to directory where to export views
         |--------------------------------------------------------------------------
          */
-        'views' => base_path('resources/views/vendor/swagger-lume'),
+        'views' => base_path('resources/views/vendor/swagger-lumen'),
     ],
 
     /*
@@ -199,6 +199,6 @@ return [
     | Uncomment to add constants which can be used in anotations
     |--------------------------------------------------------------------------
      */
-    'constants' => [// 'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
+    'constants' => [// 'SWAGGER_LUMEN_CONST_HOST' => env('SWAGGER_LUMEN_CONST_HOST', 'http://my-default-host.com'),
     ],
 ];

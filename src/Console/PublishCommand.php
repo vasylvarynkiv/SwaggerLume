@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume\Console;
+namespace SwaggerLumen\Console;
 
 use Illuminate\Console\Command;
 
@@ -11,7 +11,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $name = 'swagger-lume:publish';
+    protected $name = 'swagger-lumen:publish';
 
     /**
      * The console command description.
@@ -28,7 +28,7 @@ class PublishCommand extends Command
     public function handle()
     {
         $this->info('Publishing all files');
-        $this->call('swagger-lume:publish-config');
-        $this->call('swagger-lume:publish-views');
+        $this->call('swagger-lumen:publish-config');
+        $this->call('swagger-lumen:publish-views');
     }
 }

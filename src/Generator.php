@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume;
+namespace SwaggerLumen;
 
 use Illuminate\Support\Facades\File;
 
@@ -8,27 +8,27 @@ class Generator
 {
     public static function generateDocs()
     {
-        $version = config('swagger-lume.version');
+        $version = config('swagger-lumen.version');
         foreach ($version as $key => $val) {
-            $appDir = config('swagger-lume.paths.annotations') . '/' . $val;
-            $docDir = config('swagger-lume.paths.docs') . '/' . $val;
+            $appDir = config('swagger-lumen.paths.annotations') . '/' . $val;
+            $docDir = config('swagger-lumen.paths.docs') . '/' . $val;
             if (!File::exists($docDir) || is_writable($docDir)) {
                 // delete all existing documentation
                 if (File::exists($docDir)) {
                     File::deleteDirectory($docDir);
                 }
 
-                self::defineConstants(config('swagger-lume.constants') ?: []);
+                self::defineConstants(config('swagger-lumen.constants') ?: []);
 
                 File::makeDirectory($docDir);
-                $excludeDirs = config('swagger-lume.paths.excludes');
+                $excludeDirs = config('swagger-lumen.paths.excludes');
                 $swagger = \Swagger\scan($appDir, ['exclude' => $excludeDirs]);
 
-                if (config('swagger-lume.paths.base') !== null) {
-                    $swagger->basePath = config('swagger-lume.paths.base');
+                if (config('swagger-lumen.paths.base') !== null) {
+                    $swagger->basePath = config('swagger-lumen.paths.base');
                 }
 
-                $filename = $docDir . '/' . config('swagger-lume.paths.docs_json');
+                $filename = $docDir . '/' . config('swagger-lumen.paths.docs_json');
                 $swagger->saveAs($filename);
 
                 $security = new SecurityDefinitions();

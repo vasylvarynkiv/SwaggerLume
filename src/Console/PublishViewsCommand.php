@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume\Console;
+namespace SwaggerLumen\Console;
 
 use Illuminate\Console\Command;
 use SwaggerLume\Console\Helpers\Publisher;
@@ -12,7 +12,7 @@ class PublishViewsCommand extends Command
      *
      * @var string
      */
-    protected $name = 'swagger-lume:publish-views';
+    protected $name = 'swagger-lumen:publish-views';
 
     /**
      * The console command description.
@@ -32,7 +32,7 @@ class PublishViewsCommand extends Command
 
         (new Publisher($this))->publishFile(
             realpath(__DIR__.'/../../resources/views/').'/index.blade.php',
-            config('swagger-lume.paths.views'),
+            config('swagger-lumen.paths.views'),
             'index.blade.php'
         );
     }

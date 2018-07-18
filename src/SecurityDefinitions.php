@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerLume;
+namespace SwaggerLumen;
 
 use Illuminate\Support\Collection;
 
@@ -13,14 +13,14 @@ class SecurityDefinitions
      */
     public function generate($filename)
     {
-        $securityConfig = config('swagger-lume.security', []);
+        $securityConfig = config('swagger-lumen.security', []);
 
         if (is_array($securityConfig) && ! empty($securityConfig)) {
             $documentation = collect(
                 json_decode(file_get_contents($filename))
             );
 
-            $openApi3 = version_compare(config('swagger-lume.swagger_version'), '3.0', '>=');
+            $openApi3 = version_compare(config('swagger-lumen.swagger_version'), '3.0', '>=');
 
             $documentation = $openApi3 ?
                 $this->generateOpenApi($documentation, $securityConfig) :

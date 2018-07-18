@@ -3,8 +3,8 @@
 /**
  * @OAS\Info(
  *      version="1.0.0",
- *      title="SwaggerLume OpenApi",
- *      description="SwaggerLume OpenApi description",
+ *      title="SwaggerLumen OpenApi",
+ *      description="SwaggerLumen OpenApi description",
  *      @OAS\Contact(
  *          email="darius@matulionis.lt"
  *      ),
@@ -17,13 +17,13 @@
 
 /**
  *  @OAS\Server(
- *      url=SWAGGER_LUME_CONST_HOST,
- *      description="SwaggerLume OpenApi dynamic host server"
+ *      url=SWAGGER_LUMEN_CONST_HOST,
+ *      description="SwaggerLumen OpenApi dynamic host server"
  *  )
  *
  *  @OAS\Server(
 *      url="https://projects.dev/api/v1",
- *      description="SwaggerLume OpenApi Server"
+ *      description="SwaggerLumen OpenApi Server"
  * )
  */
 

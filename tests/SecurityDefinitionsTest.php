@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use SwaggerLume\Generator;
+use SwaggerLumen\Generator;
 
 class SecurityDefinitionsTest extends LumenTestCase
 {
@@ -15,26 +15,26 @@ class SecurityDefinitionsTest extends LumenTestCase
 
         $this->setPaths();
 
-        $cfg = config('swagger-lume');
+        $cfg = config('swagger-lumen');
         $security = [
-            'new_api_key_securitye' => [
+            'new_api_key_security' => [
                 'type' => 'apiKey',
                 'name' => 'api_key_name',
                 'in' => 'query',
             ],
         ];
         $cfg['security'] = $security;
-        config(['swagger-lume' => $cfg]);
+        config(['swagger-lumen' => $cfg]);
 
         tap(new Generator)->generateDocs();
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
 
-        $response = $this->get(config('swagger-lume.routes.docs'));
+        $response = $this->get(config('swagger-lumen.routes.docs'));
 
         $this->assertResponseOk();
 
-        $this->assertContains('new_api_key_securitye', $response->response->getContent());
+        $this->assertContains('new_api_key_security', $response->response->getContent());
         $this->seeJson($security);
     }
 
@@ -47,7 +47,7 @@ class SecurityDefinitionsTest extends LumenTestCase
 
         $this->setPaths();
 
-        $cfg = config('swagger-lume');
+        $cfg = config('swagger-lumen');
         $security = [
             'new_api_key_security' => [
                 'type' => 'apiKey',
@@ -57,13 +57,13 @@ class SecurityDefinitionsTest extends LumenTestCase
         ];
         $cfg['security'] = $security;
         $cfg['swagger_version'] = '3.0';
-        config(['swagger-lume' => $cfg]);
+        config(['swagger-lumen' => $cfg]);
 
         tap(new Generator)->generateDocs();
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
 
-        $response = $this->get(config('swagger-lume.routes.docs'));
+        $response = $this->get(config('swagger-lumen.routes.docs'));
 
         $this->assertResponseOk();
 
