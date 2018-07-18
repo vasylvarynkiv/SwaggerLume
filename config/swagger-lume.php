@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'version' => ['v1' => 'V1', 'v2' => 'V2'],
     'api' => [
         /*
         |--------------------------------------------------------------------------
@@ -72,7 +73,7 @@ return [
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
          */
-        'annotations' => base_path('app'),
+        'annotations' => base_path('app/Http/Controllers'),
 
         /*
         |--------------------------------------------------------------------------
@@ -86,7 +87,7 @@ return [
         | Edit to set the swagger scan base path
         |--------------------------------------------------------------------------
         */
-        'base' => env('L5_SWAGGER_BASE_PATH', null),
+        'base' => env('L5_SWAGGER_BASE_PATH', false),
 
         /*
         |--------------------------------------------------------------------------
@@ -149,7 +150,7 @@ return [
     | Turn this off to remove swagger generation on production
     |--------------------------------------------------------------------------
      */
-    'generate_always' => env('SWAGGER_GENERATE_ALWAYS', false),
+    'generate_always' => env('SWAGGER_GENERATE_ALWAYS', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -198,7 +199,6 @@ return [
     | Uncomment to add constants which can be used in anotations
     |--------------------------------------------------------------------------
      */
-    'constants' => [
-        // 'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
+    'constants' => [// 'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
     ],
 ];
