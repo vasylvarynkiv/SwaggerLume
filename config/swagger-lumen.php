@@ -5,10 +5,10 @@ return [
     'api' => [
         /*
         |--------------------------------------------------------------------------
-        | Edit to set the api's title
+        | Edit to set the api title
         |--------------------------------------------------------------------------
          */
-        'title' => 'Swagger Lume API',
+        'title' => 'Swagger Lumen API',
     ],
 
     'routes' => [
@@ -196,7 +196,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Uncomment to add constants which can be used in anotations
+    | Uncomment to add constants which can be used in annotations
     |--------------------------------------------------------------------------
      */
     'constants' => [// 'SWAGGER_LUMEN_CONST_HOST' => env('SWAGGER_LUMEN_CONST_HOST', 'http://my-default-host.com'),
