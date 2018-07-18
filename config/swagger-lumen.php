@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'version' => ['v1' => 'V1', 'v2' => 'V2'],
+    'version' => [
+        'v1' => 'V1',
+        'v2' => 'V2'
+    ],
     'api' => [
         /*
         |--------------------------------------------------------------------------
@@ -199,6 +202,7 @@ return [
     | Uncomment to add constants which can be used in annotations
     |--------------------------------------------------------------------------
      */
-    'constants' => [// 'SWAGGER_LUMEN_CONST_HOST' => env('SWAGGER_LUMEN_CONST_HOST', 'http://my-default-host.com'),
+    'constants' => [
+        // 'SWAGGER_LUMEN_CONST_HOST' => env('SWAGGER_LUMEN_CONST_HOST', 'http://my-default-host.com'),
     ],
 ];
