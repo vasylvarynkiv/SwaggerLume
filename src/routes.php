@@ -1,18 +1,18 @@
 <?php
 
-$route->get(config('swagger-lume.routes.docs'), [
+$route->get(config('swagger-lume.routes.docs') . '/{version}', [
     'as' => 'swagger-lume.docs',
     'middleware' => config('swagger-lume.routes.middleware.docs', []),
     'uses' => 'Http\Controllers\SwaggerLumeController@docs',
 ]);
 
-$route->get(config('swagger-lume.routes.api'), [
+$route->get(config('swagger-lume.routes.api') . '/{version}', [
     'as' => 'swagger-lume.api',
     'middleware' => config('swagger-lume.routes.middleware.api', []),
     'uses' => 'Http\Controllers\SwaggerLumeController@api',
 ]);
 
-$route->get(config('swagger-lume.routes.assets').'/{asset}', [
+$route->get(config('swagger-lume.routes.assets') . '/{asset}', [
     'as' => 'swagger-lume.asset',
     'middleware' => config('swagger-lume.routes.middleware.asset', []),
     'uses' => 'Http\Controllers\SwaggerLumeAssetController@index',
